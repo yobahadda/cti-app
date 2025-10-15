@@ -384,10 +384,10 @@ class MITREAttackLoader:
 if __name__ == "__main__":
     # Your Neo4j Aura credentials
     
-    loader = MITREAttackLoader(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
     NEO4J_URI = os.getenv("NEO4J_URI")
     NEO4J_USER = os.getenv("NEO4J_USER")
     NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
+    loader = MITREAttackLoader(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
     try:
         loader.load_all()
     except Exception as e:
