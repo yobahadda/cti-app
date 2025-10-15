@@ -2,7 +2,7 @@
 MITRE ATT&CK to Neo4j Data Loader
 Configured for your Neo4j Aura instance
 """
-
+import os
 import requests
 from neo4j import GraphDatabase
 import json
@@ -383,12 +383,11 @@ class MITREAttackLoader:
 # Main execution
 if __name__ == "__main__":
     # Your Neo4j Aura credentials
-    NEO4J_URI = "neo4j+s://4df7529c.databases.neo4j.io"
-    NEO4J_USER = "neo4j"
-    NEO4J_PASSWORD = "AD0Cr_vK2k1Sdm25wxj5sHPaf26YE7KZsGBe7aBUL0U"
     
     loader = MITREAttackLoader(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
-    
+    NEO4J_URI = os.getenv("NEO4J_URI")
+    NEO4J_USER = os.getenv("NEO4J_USER")
+    NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
     try:
         loader.load_all()
     except Exception as e:
