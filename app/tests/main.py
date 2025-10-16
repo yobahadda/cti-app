@@ -3,7 +3,7 @@ CTI Log Correlation System
 Kafka Consumer + MITRE ATT&CK Mapping + Neo4j Profiling
 """
 
-from kafka import KafkaConsumer
+from confluent_kafka import Consumer
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
@@ -368,7 +368,7 @@ class CTIKafkaConsumer:
     def start(self):
         """Start consuming messages"""
         try:
-            self.consumer = KafkaConsumer(
+            self.consumer = Consumer(
                 *KAFKA_TOPICS,
                 bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
                 group_id=KAFKA_GROUP_ID,

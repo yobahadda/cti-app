@@ -1,4 +1,5 @@
-from kafka import KafkaProducer
+# from kafka import Consumer
+from confluent_kafka import Consumer
 import json
 import time
 from datetime import datetime
@@ -96,7 +97,7 @@ SAMPLE_LOGS = [
 
 def create_producer():
     """Create Kafka producer"""
-    return KafkaProducer(
+    return Consumer(
         bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
     )
