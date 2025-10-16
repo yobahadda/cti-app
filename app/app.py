@@ -473,4 +473,7 @@ def shutdown_event():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    #load from the environment variable the port if exists
+    port = int(os.getenv("PORT", 8012))
+
+    uvicorn.run(app, host="0.0.0.0", port=port)
